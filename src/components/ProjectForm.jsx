@@ -1,5 +1,5 @@
 import React from "react";
-
+import Input from "./Input";
 const ProjectForm = () => {
   return (
     <div className="w-[57rem] mt-16 flex flex-col items-end">
@@ -31,11 +31,7 @@ const ProjectForm = () => {
           >
             TITLE
           </label>
-          <input
-            className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
-            required
-            name="title"
-          />
+          <Input name="title"></Input>
         </div>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
@@ -44,11 +40,8 @@ const ProjectForm = () => {
           >
             DESCRIPTION
           </label>
-          <textarea
-            className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
-            required
-            name="description"
-          />
+          <Input name="description" textarea={true}></Input>
+
         </div>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
@@ -57,11 +50,8 @@ const ProjectForm = () => {
           >
             DUE DATE
           </label>
-          <input
-            className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
-            required
-            name="dueDate"
-          />
+          <Input name="title"></Input>
+
         </div>
       </form>
     </div>
