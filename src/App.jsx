@@ -10,8 +10,8 @@ function App() {
   };
 
   return (
-    <main className="" h-screen my-8 flex gap-8>
-      {!addProjectMode && (
+    <main className="h-screen my-8 flex gap-8">
+      {/* {!addProjectMode && (
         <div className="mt-6 text-center">
           <img
             src={logo}
@@ -32,9 +32,9 @@ function App() {
             + Add Project
           </button>
         </div>
-      )}
+      )} */}
 
-      {addProjectMode && <ProjectForm></ProjectForm>}
+      <ProjectForm></ProjectForm>
 
       <SideBar></SideBar>
     </main>
