@@ -1,7 +1,8 @@
 import React from "react";
+
 const ProjectForm = () => {
   return (
-    <div className="w-[57rem] mt-16">
+    <div className="w-[57rem] mt-16 flex flex-col items-end">
       <menu className="flex items-center justify-end gap-2 my-4">
         <li>
           <button className="text-stone-800 hover:text-stone-950 px-6 py-2">
@@ -22,8 +23,8 @@ const ProjectForm = () => {
           </button>
         </li>
       </menu>
-      <form className="items-end" onSubmit={() => {}}>
-        <p className="flex flex-col gap-1 my-4">
+      <form onSubmit={() => {}}>
+        <div className="flex flex-col gap-2 my-4 items-start">
           <label
             htmlFor="title"
             className="text-sm font-bold uppercase text-stone-500"
@@ -31,25 +32,25 @@ const ProjectForm = () => {
             TITLE
           </label>
           <input
-            className="w-64 px-2 py-1 rounded-sm bg-stone-200"
+            className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
             required
             name="title"
           />
-        </p>
-        <p className="flex flex-col gap-1 my-4">
+        </div>
+        <div className="flex flex-col gap-2 my-4 items-start">
           <label
             htmlFor="description"
             className="text-sm font-bold uppercase text-stone-500"
           >
             DESCRIPTION
           </label>
-          <input
-            className="w-64 px-2 py-1 rounded-sm bg-stone-200"
+          <textarea
+            className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
             required
             name="description"
           />
-        </p>
-        <p className="flex flex-col gap-1 my-4">
+        </div>
+        <div className="flex flex-col gap-2 my-4 items-start">
           <label
             htmlFor="dueDate"
             className="text-sm font-bold uppercase text-stone-500"
@@ -57,12 +58,11 @@ const ProjectForm = () => {
             DUE DATE
           </label>
           <input
-            className="w-64 px-2 py-1 rounded-sm bg-stone-200"
+            className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
             required
             name="dueDate"
           />
-        </p>
-
+        </div>
       </form>
     </div>
   );
