@@ -1,5 +1,9 @@
 import React from "react";
-const Input = ({ name, textarea = false }) => {
+
+const Input = ({ name, textarea = false, ...props }) => {
+  const classes =
+    "w-full p-1 border-b-2 rounded-sm border-stone-200 text-stone-600 focus:outline-none focus:border-stone-600";
+
   return (
     <>
       {!textarea && (
@@ -11,7 +15,8 @@ const Input = ({ name, textarea = false }) => {
 
       {textarea && (
         <textarea
-          className="w-[30rem] px-2 py-1 rounded-sm bg-stone-200"
+          className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"
+          {...props}
           name={name}
           id=""
           cols="30"
