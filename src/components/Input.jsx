@@ -15,7 +15,7 @@ const Input = ({ name, textarea = false, ...props }) => {
 
       {textarea && (
         <textarea
-          className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"
+          className={classes}
           {...props}
           name={name}
           id=""
