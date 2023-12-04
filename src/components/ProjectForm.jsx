@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "./Input";
-const ProjectForm = () => {
+const ProjectForm = (props) => {
   return (
     <div className="w-[57rem] mt-16 flex flex-col items-end">
       <menu className="flex items-center justify-end gap-2 my-4">
@@ -23,7 +23,7 @@ const ProjectForm = () => {
           </button>
         </li>
       </menu>
-      <form onSubmit={() => {}}>
+      <form onSubmit={props.handleSubmit}>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
             htmlFor="title"
@@ -31,7 +31,7 @@ const ProjectForm = () => {
           >
             TITLE
           </label>
-          <Input name="title"></Input>
+          <Input name="title" onChange={props.onChange}></Input>
         </div>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
@@ -40,8 +40,11 @@ const ProjectForm = () => {
           >
             DESCRIPTION
           </label>
-          <Input name="description" textarea={true}></Input>
-
+          <Input
+            name="description"
+            textarea={true}
+            onChange={props.onChange}
+          ></Input>
         </div>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
@@ -50,8 +53,7 @@ const ProjectForm = () => {
           >
             DUE DATE
           </label>
-          <Input name="title"></Input>
-
+          <Input name="title" onChange={props.onChange}></Input>
         </div>
       </form>
     </div>
