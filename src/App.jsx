@@ -3,6 +3,7 @@ import SideBar from "./components/SideBar";
 import logo from "../src/assets/no-projects.png";
 import ProjectForm from "./components/ProjectForm";
 import NoProject from "./components/NoProject";
+
 function App() {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [projectState, setProjectState] = useState({
@@ -16,8 +17,18 @@ function App() {
     setShowProjectForm(true);
   };
 
+  // To dos: this needs to handle an object. 
+  // The object must dynamically identify which specific property needs to be added. 
+  // e.g. [e.target.name] = e.target.value
   const handleChange = (e) => {
-    e.target.value;
+      setShowProjectForm((prevState) => {
+        return [
+          ...prevState, 
+          newProject: {
+
+          }
+        ]
+      })
   };
 
   const handleSubmit = (e) => {
@@ -37,12 +48,8 @@ function App() {
       )}
 
       {showProjectForm && (
-        <ProjectForm onChange={() => {}} onSubmit={() => {}}></ProjectForm>
+        <ProjectForm onChange={() => {}} handleSubmit={handleSubmit}></ProjectForm>
       )}
-      {/* <ProjectForm
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      ></ProjectForm> */}
     </main>
   );
 }
