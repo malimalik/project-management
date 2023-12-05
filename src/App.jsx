@@ -1,16 +1,16 @@
+import { nanoid } from "nanoid";
 import { useState } from "react";
+import SelectedProject from "./components/SelectedProject";
 import SideBar from "./components/SideBar";
 import logo from "../src/assets/no-projects.png";
 import ProjectForm from "./components/ProjectForm";
 import NoProject from "./components/NoProject";
-import {nanoid} from 'nanoid';
 
 function App() {
   const [projectState, setProjectState] = useState({
     selectedProjectId: undefined,
     projects: [],
   });
-
 
   // changes the state from no project selected to "adding project"
   // 'undefined' is no project selected, 'null' is adding a new project and then anything else is project has been added.
@@ -23,45 +23,45 @@ function App() {
     });
   };
 
-
-  handleOpenSelectedProject = (id) => {
+  const handleOpenSelectedProject = (id) => {
     setProjectState((prevState) => {
       return {
         ...prevState,
         selectedProjectId: id,
       };
     });
-  }
+  };
 
   const addNewProject = (projectData) => {
     setProjectState((prevState) => {
-      
       const newProject = {
-        ...projectData, 
+        ...projectData,
         id: nanoid(),
-      }
+      };
 
       return {
-        ...prevState, 
+        ...prevState,
         selectedProjectId: undefined,
-        projects: [...prevState.projects, newProject]
-      }
-    })
-  }
+        projects: [...prevState.projects, newProject],
+      };
+    });
+  };
 
   const handleCancel = () => {
     setProjectState((prevState) => {
       return {
-        ...prevState, 
+        ...prevState,
         selectedProjectId: undefined,
-      }
-    })
-  }
+      };
+    });
+  };
 
-  console.log(projectState);
+  const selectedProject = projectState.projects.find((project) => {
+    return project.id === projectState.selectedProjectId;
+  });
 
+  let content = <SelectedProject project={selectedProject}></SelectedProject>;
 
-  let content;
   if (projectState.selectedProjectId === null) {
     content = (
       <ProjectForm onAdd={addNewProject} onCancel={handleCancel}></ProjectForm>
@@ -70,10 +70,14 @@ function App() {
     content = <NoProject onAddingProject={handleAddingProject}></NoProject>;
   }
 
-
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar onAddingProject={handleAddingProject} projects={projectState.projects} onSelectProject={addNewProject}></SideBar>
+      <SideBar
+      onAddingProject={handleAddingProject}
+        projects={projectState.projects}
+        selectedProjectId={projectState.selectedProjectId}
+        onSelectProject={handleOpenSelectedProject}
+      ></SideBar>
 
       {/* <div className="flex-grow pl-[50px]"></div> */}
       {content}
