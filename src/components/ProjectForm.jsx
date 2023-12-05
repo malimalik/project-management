@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import Input from "./Input";
 const ProjectForm = (props) => {
+  const title = useRef();
+  const description = useRef();
+  const dueDate = useRef();
 
+  const handleSave = () => {
+    const enteredTitle = title.current.value;
+    const enteredDescription = description.current.value;
+    const enteredDueDate = dueDate.current.value;
+
+    props.onAdd({
+      title: enteredTitle,
+      description: enteredDescription,
+      dueDate: enteredDueDate,
+    });
+  };
 
   return (
     <div className="w-[57rem] mt-16 flex flex-col items-end">
@@ -20,12 +34,13 @@ const ProjectForm = (props) => {
             bg-stone-800
             text-stone-50
             hover:bg-stone-950"
+            onClick={handleSave}
           >
             Save
           </button>
         </li>
       </menu>
-      <form onSubmit={props.handleSubmit}>
+      <form>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
             htmlFor="title"
@@ -33,7 +48,7 @@ const ProjectForm = (props) => {
           >
             TITLE
           </label>
-          <Input name="title" onChange={props.onChange}></Input>
+          <Input name="title" ref={title}></Input>
         </div>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
@@ -42,11 +57,7 @@ const ProjectForm = (props) => {
           >
             DESCRIPTION
           </label>
-          <Input
-            name="description"
-            textarea={true}
-            onChange={props.onChange}
-          ></Input>
+          <Input name="description" textarea={true} ref={description}></Input>
         </div>
         <div className="flex flex-col gap-2 my-4 items-start">
           <label
@@ -55,7 +66,7 @@ const ProjectForm = (props) => {
           >
             DUE DATE
           </label>
-          <Input name="title" onChange={props.onChange}></Input>
+          <Input name="dueDate" ref={dueDate} type="date"></Input>
         </div>
       </form>
     </div>
