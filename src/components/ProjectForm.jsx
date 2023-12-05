@@ -3,13 +3,6 @@ import Input from "./Input";
 const ProjectForm = (props) => {
 
 
-  const handleOnSubmit = (e) => {
-      e.preventDefault();
-
-      props.handleSubmit();
-  }
-
-
   return (
     <div className="w-[57rem] mt-16 flex flex-col items-end">
       <menu className="flex items-center justify-end gap-2 my-4">

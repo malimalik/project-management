@@ -5,51 +5,36 @@ import ProjectForm from "./components/ProjectForm";
 import NoProject from "./components/NoProject";
 
 function App() {
-  const [showProjectForm, setShowProjectForm] = useState(false);
   const [projectState, setProjectState] = useState({
-    activeProject: undefined,
+    selectedProjectId: undefined,
     projects: [],
   });
 
-  const noProjects = projectState.projects.length === 0;
-
-  const handleProjectScreen = () => {
-    setShowProjectForm(true);
+  const handleAddingProject = () => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: null,
+      };
+    });
   };
 
-  // To dos: this needs to handle an object. 
-  // The object must dynamically identify which specific property needs to be added. 
-  // e.g. [e.target.name] = e.target.value
-  const handleChange = (e) => {
-      setShowProjectForm((prevState) => {
-        return [
-          ...prevState, 
-          newProject: {
+  let content;
+  if (projectState.selectedProjectId === null) {
+    content = (
+      <ProjectForm handleSubmit={() => {}} onChange={() => {}}></ProjectForm>
+    );
+  } else if (projectState.selectedProjectId === undefined) {
+    content = <NoProject onAddingProject={handleAddingProject}></NoProject>;
+  }
 
-          }
-        ]
-      })
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  const addNewProject = () => {
-    return;
-  };
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar handleClick={handleProjectScreen}></SideBar>
-      {/* <div className="flex-grow pl-[50px]"></div> */}
-      {!showProjectForm && noProjects && (
-        <NoProject handleClick={handleProjectScreen}></NoProject>
-      )}
+      <SideBar onAddingProject={handleAddingProject}></SideBar>
 
-      {showProjectForm && (
-        <ProjectForm onChange={() => {}} handleSubmit={handleSubmit}></ProjectForm>
-      )}
+      {/* <div className="flex-grow pl-[50px]"></div> */}
+      {content}
     </main>
   );
 }
