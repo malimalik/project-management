@@ -34,6 +34,7 @@ function App() {
 
       return {
         ...prevState, 
+        selectedProjectId: undefined,
         projects: [...prevState.projects, newProject]
       }
     })
@@ -54,7 +55,7 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar onAddingProject={handleAddingProject}></SideBar>
+      <SideBar onAddingProject={handleAddingProject} projects={projectState.projects}></SideBar>
 
       {/* <div className="flex-grow pl-[50px]"></div> */}
       {content}

@@ -8,9 +8,8 @@ const SideBar = (props) => {
         <h2 className="text-xl font-bold text-stone-200 my-4 mb-3">
           Your Projects
         </h2>
-        <Button onClick={props.onAddingProject}>+ Add Project</Button>
-
-        <ProjectList />
+        <Button onClick={props.onAddingProject}> + Add Project</Button>
+        <ProjectList projects={props.projects} />
       </section>
     </div>
   );
