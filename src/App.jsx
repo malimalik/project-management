@@ -24,8 +24,13 @@ function App() {
   };
 
 
-  handleOpenSelectedProject = () => {
-    
+  handleOpenSelectedProject = (id) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: id,
+      };
+    });
   }
 
   const addNewProject = (projectData) => {
@@ -68,7 +73,7 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar onAddingProject={handleAddingProject} projects={projectState.projects}></SideBar>
+      <SideBar onAddingProject={handleAddingProject} projects={projectState.projects} onSelectProject={addNewProject}></SideBar>
 
       {/* <div className="flex-grow pl-[50px]"></div> */}
       {content}
