@@ -24,6 +24,10 @@ function App() {
   };
 
 
+  handleOpenSelectedProject = () => {
+    
+  }
+
   const addNewProject = (projectData) => {
     setProjectState((prevState) => {
       
