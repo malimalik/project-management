@@ -21,7 +21,10 @@ const ProjectForm = (props) => {
     <div className="w-[57rem] mt-16 flex flex-col items-end">
       <menu className="flex items-center justify-end gap-2 my-4">
         <li>
-          <button className="text-stone-800 hover:text-stone-950 px-6 py-2">
+          <button
+            className="text-stone-800 hover:text-stone-950 px-6 py-2"
+            onClick={props.onCancel}
+          >
             Cancel
           </button>
         </li>
