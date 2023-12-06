@@ -1,6 +1,6 @@
 import React from "react";
-const SelectedProject = ({project}) => {
-
+import Tasks from "./Tasks";
+const SelectedProject = ({ project }) => {
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -23,6 +23,10 @@ const SelectedProject = ({project}) => {
           {project.description}
         </p>
       </header>
+
+      <main>
+        <Tasks></Tasks>
+      </main>
     </section>
   );
 };

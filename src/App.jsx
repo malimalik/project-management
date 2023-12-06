@@ -71,16 +71,17 @@ function App() {
   }
 
   return (
-    <main className="h-screen my-8 flex gap-8">
-      <SideBar
-      onAddingProject={handleAddingProject}
-        projects={projectState.projects}
-        selectedProjectId={projectState.selectedProjectId}
-        onSelectProject={handleOpenSelectedProject}
-      ></SideBar>
+    <main className="h-screen my-8 flex gap-8 overflow-hidden">
+      <div className="w-1/4 overflow-auto">
+        <SideBar
+          onAddingProject={handleAddingProject}
+          projects={projectState.projects}
+          selectedProjectId={projectState.selectedProjectId}
+          onSelectProject={handleOpenSelectedProject}
+        />
+      </div>
 
-      {/* <div className="flex-grow pl-[50px]"></div> */}
-      {content}
+      <div className="flex-grow overflow-auto">{content}</div>
     </main>
   );
 }

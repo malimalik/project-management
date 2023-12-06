@@ -18,8 +18,8 @@ const ProjectForm = (props) => {
       enteredDescription.trim() === "" ||
       enteredDueDate.trim() === ""
     ) {
-        modalRef.current.open();
-        return;
+      modalRef.current.open();
+      return;
     }
 
     props.onAdd({
@@ -33,11 +33,12 @@ const ProjectForm = (props) => {
     <>
       <Modal ref={modalRef}>
         <h2 className="my-4 text-center text-xl font-bold">Invalid Input</h2>
-        <p className="text-stone-600 mb-4 text-center">Please make sure you provide a valid value for every field</p>
-
+        <p className="text-stone-600 mb-4 text-center">
+          Please make sure you provide a valid value for every field
+        </p>
       </Modal>
-      <div className="w-[57rem] mt-16 flex flex-col items-end">
-        <menu className="flex items-center justify-end gap-2 my-4">
+      <div className="w-[37rem] mt-16 flex flex-col items-start">
+        <menu className=" w-64 items-end flex gap-2 my-4">
           <li>
             <button
               className="text-stone-800 hover:text-stone-950 px-6 py-2"
