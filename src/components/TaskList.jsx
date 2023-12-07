@@ -5,7 +5,6 @@ const TaskList = (props) => {
     (task) => task.projectId === props.projectId
   );
 
-  console.log(projectTasks);
 
   return (
     <div className="mt-5">

@@ -23,6 +23,24 @@ function App() {
     });
   };
 
+  const handleDelete = (doomedProjectId) => {
+    setProjectState((prevState) => {
+      const updatedProjects = prevState.projects.filter(
+        (project) => project.id !== doomedProjectId
+      );
+      
+      console.log("here are the new projects");
+      console.log(updatedProjects);
+      return {
+        ...prevState,
+        projects: updatedProjects,
+        selectedProjectId: undefined,
+      };
+
+    });
+
+  };
+
   const handleOpenSelectedProject = (id) => {
     setProjectState((prevState) => {
       return {
@@ -60,7 +78,12 @@ function App() {
     return project.id === projectState.selectedProjectId;
   });
 
-  let content = <SelectedProject project={selectedProject}></SelectedProject>;
+  let content = (
+    <SelectedProject
+      project={selectedProject}
+      onDelete={handleDelete}
+    ></SelectedProject>
+  )
 
   if (projectState.selectedProjectId === null) {
     content = (

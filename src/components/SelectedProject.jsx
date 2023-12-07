@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Task from "./Task";
 import TaskList from "./TaskList";
-const SelectedProject = ({ project }) => {
+const SelectedProject = ({ project, onDelete}) => {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (newTaskName) => {
@@ -20,7 +20,6 @@ const SelectedProject = ({ project }) => {
     setTasks((currentTasks) =>
       currentTasks.filter((task) => task.id !== doomedTaskId)
     );
-    console.log(tasks);
   };
 
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
@@ -36,7 +35,7 @@ const SelectedProject = ({ project }) => {
           <h1 className="text-3xl font-bold text-tone-600 mb-2">
             {project.title}
           </h1>
-          <button className="text-stone-600 hover:text-stone-950">
+          <button className="text-stone-600 hover:text-stone-950" onClick={() => onDelete(project.id)}>
             Delete
           </button>
         </div>
