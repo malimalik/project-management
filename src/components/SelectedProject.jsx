@@ -1,11 +1,34 @@
-import React from "react";
-import Tasks from "./Tasks";
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
+import Task from "./Task";
+import TaskList from "./TaskList";
 const SelectedProject = ({ project }) => {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (newTaskName) => {
+    setTasks((prevTasks) => [
+      ...prevTasks,
+      {
+        id: nanoid(),
+        name: newTaskName,
+        projectId: project.id,
+      },
+    ]);
+  };
+
+  const onClear = (doomedTaskId) => {
+    setTasks((currentTasks) =>
+      currentTasks.filter((task) => task.id !== doomedTaskId)
+    );
+    console.log(tasks);
+  };
+
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
+
   return (
     <section className="w-[35rem] mt-16">
       <header className="pb-4 mb-4 border-b-2 border-stone-300">
@@ -25,7 +48,15 @@ const SelectedProject = ({ project }) => {
       </header>
 
       <main>
-        <Tasks></Tasks>
+        <Task handleTask={addTask}></Task>
+
+        {/* the task list that appears should be the one according to the project */}
+
+        <TaskList
+          tasks={tasks}
+          onClear={onClear}
+          projectId={project.id}
+        ></TaskList>
       </main>
     </section>
   );

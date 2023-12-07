@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
 import Input from "./Input";
 import Button from "./Button";
-const Tasks = (props) => {
+const Task = (props) => {
   const taskName = useRef();
 
   const handleTaskAdd = () => {
     const enteredTaskName = taskName.current.value;
+    props.handleTask(enteredTaskName);
   };
 
   return (
@@ -18,10 +19,10 @@ const Tasks = (props) => {
         <label htmlFor="task"></label>
         <Input name="taskName" ref={taskName} />
 
-        <Button>Add</Button>
+        <Button onClick={handleTaskAdd}>Add</Button>
       </div>
     </>
   );
 };
 
-export default Tasks;
+export default Task;
