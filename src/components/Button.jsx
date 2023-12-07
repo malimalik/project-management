@@ -1,7 +1,7 @@
 const Button = (props) => {
   return (
     <button
-      className=" ml-3 px-4 py-2 text-xs md:text-base rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100"
+      className=" ml-3 px-4 py-2 text-xs md:text-base rounded-md bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
       onClick={props.onClick}
       {...props}
     >
